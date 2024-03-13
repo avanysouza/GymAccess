@@ -1,0 +1,75 @@
+﻿@model IEnumerable<GymAcess.Models.FichaExercicio>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container ">
+
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h1>Ficha de Exercícios</h1>
+       
+
+    </div>
+
+
+    <div class="d-flex justify-content-between align-items-center mb-5">
+
+        <form>
+
+            <p>Aluno:</p>
+            @Html.DropDownList("IdAluno", (SelectList)ViewBag.Alunos, "Selecione o Aluno",
+                     @htmlAttributes: new { @onchange = "this.form.submit();", @class = "btn btn-secondary " }) <a class="btn btn-success mx-2" asp-action="Create" asp-route-Id="@ViewBag.AlunoSelecionado" class="bi bi-file-earmark-plus mx-2"><i class="bi bi-clipboard-data mx-2"></i>Cadastrar nova Ficha</a>
+            <br />
+
+            <br />
+            <hr />
+            <h4>Consulta de Planos Cadastrados:</h4>
+            <br />
+            <p>Plano:</p>
+            @Html.DropDownList("idPlano", (SelectList)ViewBag.Planos, "Selecione o Plano",
+                     @htmlAttributes: new { @onchange = "this.form.submit();", @class = "btn btn-secondary " })
+            <br />
+            <br />
+            <a class="btn btn-primary mx-2" asp-action="Create" asp-route-Id="@ViewBag.AlunoSelecionado" class="bi bi-file-earmark-plus mx-2"><i class="bi bi-clipboard-data mx-2"></i>Adicionar exercício na lista</a>
+        </form>
+    </div>
+
+    <table class="table table-light table-hover mt-5">
+        <thead>
+
+            <tr>
+                <th scope="col">Exercicio</th>
+                <th scope="col">Instrução</th>
+                <th scope="col">Aluno</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Exercicio.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Instrucao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Aluno.Nome)
+                    </td>
+
+                    <td>
+                        <a class="btn btn-warning mx-2" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square mx-2"></i>Editar</a>
+                        <a class="btn btn-danger mx-2" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash3-fill mx-2"></i>Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+

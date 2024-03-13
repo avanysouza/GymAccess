@@ -1,0 +1,84 @@
+﻿@model GymAcess.Models.Aluno
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container bg-dark p-5 rounded-5">
+
+    <div class="mb-5 text-center">
+        <h1 class="text-light">Cadastro de Alunos</h1>
+    </div>
+
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="mb-5">
+            <label asp-for="Nome" class="form-label text-light"></label>
+            <input asp-for="Nome" class="bg-light form-control text-dark" />
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Sexo" class="form-label text-light"></label>
+            <select asp-for="Sexo" class="bg-light shadow form-control text-dark" asp-items="ViewBag.Sexo"></select>
+            <span asp-validation-for="Sexo" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="DataNascimento" class="form-label text-light"></label>
+            <input asp-for="DataNascimento" class="bg-light form-control text-dark" />
+            <span asp-validation-for="DataNascimento" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Telefone" class="form-label text-light"></label>
+            <input asp-for="Telefone" class="bg-light form-control text-dark" />
+            <span asp-validation-for="Telefone" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Morada" class="form-label text-light"></label>
+            <input asp-for="Morada" class="bg-light form-control text-dark" />
+            <span asp-validation-for="Morada" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Status" class="form-label text-light"></label>
+            <select asp-for="Status" class="bg-light form-control text-dark" asp-items="ViewBag.Status"></select>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Perfil" class="form-label text-light"></label>
+            <select asp-for="Perfil" class="bg-light form-control text-dark" asp-items="ViewBag.Perfil"></select>
+            <span asp-validation-for="Perfil" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="VencMatri" class="form-label text-light"></label>
+            <input asp-for="VencMatri" class="bg-light form-control text-dark" />
+            <span asp-validation-for="VencMatri" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Usuario" class="form-label text-light"></label>
+            <input asp-for="Usuario" class="bg-light form-control text-dark" />
+            <span asp-validation-for="Usuario" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Senha" class="form-label text-light"></label>
+            <input asp-for="Senha" class="bg-light form-control text-dark" />
+            <span asp-validation-for="Senha" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="InstrutorId" class="form-label text-light"></label>
+            <select asp-for="InstrutorId" class="bg-light form-control text-dark" asp-items="ViewBag.Instrutores"></select>
+        </div>
+
+            <div class="d-flex gap-5 mt-5">
+            <button type="submit" class="btn btn-success w-50">Adicionar</button>
+            <a class="btn btn-primary w-50" asp-action="Index">Voltar</a>
+          
+        </div>
+    </form>
+ 
+
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

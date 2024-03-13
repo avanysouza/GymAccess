@@ -1,0 +1,52 @@
+﻿@model GymAcess.Models.FichaExercicio
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Adicionar nova ficha</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+      
+            @Html.Hidden("Id",(int)ViewBag.AlunoSelecionado)
+
+            <div class="form-group">
+                <h6>Selecione o exercício:</h6>
+                <select asp-for="ExercicioId" class="form-control" asp-items="ViewBag.ExercicioId"></select>
+            </div>
+            <br />
+            <div class="form-group">
+                <h6>Instrução para execução:</h6>
+                <input asp-for="Instrucao" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Plano" class="control-label"></label>
+               <select asp-for="PlanoId" class="form-control" asp-items="ViewBag.Planos"></select>
+            </div>
+            <div class="form-group">
+                <br />
+                <label asp-for="Aluno" class="control-label"></label><br />
+                @Html.TextBox("nome", (string)ViewBag.NomeAluno, new { @readonly = "readonly" })<br />
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Adicionar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-warning" asp-route-IdRegresso="@ViewBag.AlunoSelecionado">Retornar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+              
